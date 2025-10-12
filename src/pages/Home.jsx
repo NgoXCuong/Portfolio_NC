@@ -46,22 +46,20 @@ const Home = () => {
           transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
         />
 
-        {/* 🔥 Đom đóm bay (rõ + mờ xen kẽ, hỗ trợ dark/light mode) */}
+        {/* 🔥 Đom đóm bay */}
+        {/* 🔥 Đom đóm bay theo theme Hacker */}
         {[...Array(30)].map((_, i) => {
           const isDark = window.matchMedia(
             "(prefers-color-scheme: dark)"
           ).matches;
-
-          // Xen kẽ rõ - mờ
           const isBright = i % 2 === 0;
 
-          // Chọn màu theo theme
+          // Chọn màu theo theme Hacker
           const hue = isDark
-            ? Math.random() * 80 + 200 // xanh lam tím hơn
-            : Math.random() * 60 + 190; // dịu hơn khi sáng
-
-          const saturation = isDark ? 100 : 85;
-          const lightness = isDark ? (isBright ? 75 : 50) : isBright ? 45 : 30;
+            ? 140 + Math.random() * 20 // xanh lá neon cho dark
+            : 150 + Math.random() * 10; // xanh nhạt/teal cho light
+          const saturation = isDark ? 90 : 50;
+          const lightness = isBright ? (isDark ? 55 : 45) : isDark ? 35 : 30;
 
           const size = isBright
             ? Math.random() * 20 + 10
@@ -79,13 +77,13 @@ const Home = () => {
                 left: `${Math.random() * 100}%`,
                 boxShadow: isDark
                   ? isBright
-                    ? "0 0 18px 8px rgba(255,255,255,0.9)"
-                    : "0 0 8px 3px rgba(255,255,255,0.5)"
+                    ? "0 0 12px 6px rgba(0,255,0,0.8)" // neon xanh sáng
+                    : "0 0 6px 3px rgba(0,255,0,0.4)" // neon xanh mờ
                   : isBright
-                  ? "0 0 14px 6px rgba(0,0,0,0.8)"
-                  : "0 0 6px 2px rgba(0,0,0,0.5)",
+                  ? "0 0 10px 5px rgba(0,200,150,0.6)" // teal sáng
+                  : "0 0 5px 2px rgba(0,150,100,0.4)", // teal mờ
                 opacity: isBright ? 0.9 : 0.5,
-                filter: isBright ? "blur(6px)" : "blur(10px)",
+                filter: isBright ? "blur(5px)" : "blur(8px)",
               }}
               animate={{
                 x: [0, Math.random() * 120 - 60],

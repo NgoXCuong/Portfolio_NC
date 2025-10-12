@@ -15,13 +15,13 @@ const ContactSection = () => {
       id="contact"
       className="relative flex flex-col items-center justify-center min-h-screen text-gray-900 dark:text-white overflow-hidden"
     >
-      <div className="relative z-10 container mx-auto px-6 md:px-20 flex flex-col gap-10 w-full mt-20 sm:mt-5">
+      <div className="sm:h-screen relative z-10 container mx-auto px-6 md:px-20 flex flex-col gap-10 w-full mt-0 sm:mt-10">
         {/* Title */}
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-5xl font-bold text-gray-800 dark:text-white mb-3">
             Liên Hệ
           </h2>
-          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg  text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
             Mình luôn sẵn sàng kết nối và trao đổi về cơ hội hợp tác, dự án
             freelance hoặc chia sẻ kiến thức. Hãy gửi lời nhắn hoặc kết nối qua
             mạng xã hội nhé!
@@ -35,7 +35,7 @@ const ContactSection = () => {
             {[
               {
                 icon: (
-                  <Mail className="w-6 h-6 text-blue-600 dark:text-blue-300" />
+                  <Mail className="  w-6 h-6 text-blue-600 dark:text-blue-300" />
                 ),
                 label: "Email",
                 value: "ngocuongcm2005@gmail.com",

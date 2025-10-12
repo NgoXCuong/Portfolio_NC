@@ -18,32 +18,26 @@ const HeroSection = () => {
         <img
           src={bookIcon}
           alt="Book"
-          className="absolute 
-  top-[10%] left-[5%] w-30 sm:w-48 md:w-56 
-  opacity-80 animate-float-x 
-  hover:scale-110 transition-transform duration-500"
+          className="absolute top-[10%] left-[5%] w-30 sm:w-48 md:w-56 
+          opacity-80 animate-float-x hover:scale-110 transition-transform duration-500"
         />
 
         {/* Rocket Icon - góc trên phải */}
         <img
           src={rocketIcon}
           alt="Rocket"
-          className="absolute 
-  top-[15%] sm:top-[25%] md:top-[20%] right-[5%] sm:right-[25%] md:right-[35%]
-  w-30 sm:w-48 md:w-56
-  opacity-70 animate-float-rotate 
-  hover:scale-110 transition-transform duration-500"
+          className="absolute top-[15%] sm:top-[25%] md:top-[20%] right-[5%] sm:right-[25%] md:right-[35%]
+          w-30 sm:w-48 md:w-56 opacity-70 animate-float-rotate 
+          hover:scale-110 transition-transform duration-500"
         />
 
         {/* Laptop Icon - dưới giữa */}
         <img
           src={laptopIcon}
           alt="Laptop"
-          className="absolute 
-  bottom-[5%] sm:bottom-[10%] left-1/2 -translate-x-1/2 
-  w-30 sm:w-48 md:w-56 
-  opacity-70 animate-float-y 
-  hover:scale-110 transition-transform duration-500"
+          className="absolute bottom-[5%] sm:bottom-[10%] left-1/2 -translate-x-1/2 
+          w-30 sm:w-48 md:w-56 opacity-70 animate-float-y 
+          hover:scale-110 transition-transform duration-500"
         />
       </div>
 
@@ -69,7 +63,7 @@ const HeroSection = () => {
               delaySpeed={1500}
             />
           </h2>
-          <p className="text-base sm:text-lg text-gray-700 dark:text-gray-200 max-w-md sm:max-w-lg md:max-w-xl">
+          <p className="text-lg text-gray-700 dark:text-gray-200 max-w-md sm:max-w-lg md:max-w-xl">
             Mình đam mê xây dựng giao diện web hiện đại, trực quan, tối ưu trải
             nghiệm người dùng với công nghệ React, TailwindCSS và các xu hướng
             mới.

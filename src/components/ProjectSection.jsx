@@ -31,13 +31,13 @@ const ProjectsSection = () => {
       className="relative flex items-center justify-center min-h-screen
                  text-gray-900 dark:text-white overflow-hidden"
     >
-      <div className="relative z-10 container mx-auto px-6 md:px-20 mt-20 sm:mt-5">
+      <div className="sm:h-screen relative z-10 container mx-auto px-6 md:px-20 mt-20 sm:mt-10">
         {/* Title */}
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-5xl font-bold text-gray-800 dark:text-white mb-3">
             Dự Án Cá Nhân
           </h2>
-          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
             Những dự án này không chỉ là bài tập, mà là hành trình mình khám phá
             giới hạn của bản thân, thử nghiệm ý tưởng mới và tạo ra sản phẩm
             mang đậm dấu ấn riêng.
