@@ -18,7 +18,7 @@ const ContactSection = () => {
       <div className="sm:h-screen relative z-10 container mx-auto px-6 md:px-20 flex flex-col gap-10 w-full mt-0 sm:mt-10">
         {/* Title */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-5xl font-bold text-gray-800 dark:text-white mb-3">
+          <h2 className="text-3xl sm:text-5xl font-bold text-gray-800 dark:text-white mb-3 sm:mb-8">
             Liên Hệ
           </h2>
           <p className="text-lg  text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">

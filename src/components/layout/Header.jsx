@@ -9,14 +9,13 @@ const Header = () => {
   const menuRef = useRef(null);
 
   const menuItems = [
-    { href: "#hero", label: "Trang chủ", icon: <House className="w-5 h-5" /> },
-    // { href: "#about", label: "Giới thiệu", icon: <User className="w-5 h-5" /> },
-    { href: "#skills", label: "Kỹ năng", icon: <Brain className="w-5 h-5" /> },
-    { href: "#projects", label: "Dự án", icon: <Rocket className="w-5 h-5" /> },
+    { href: "#hero", label: "Trang chủ", icon: <House className="w-7 h-7" /> },
+    { href: "#skills", label: "Kỹ năng", icon: <Brain className="w-7 h-7" /> },
+    { href: "#projects", label: "Dự án", icon: <Rocket className="w-7 h-7" /> },
     {
       href: "#contact",
       label: "Liên hệ",
-      icon: <Contact className="w-5 h-5" />,
+      icon: <Contact className="w-7 h-7" />,
     },
   ];
 
@@ -57,7 +56,7 @@ const Header = () => {
     return menuItems.map((item) => {
       const isActive = activeSection === item.href;
       const baseClass =
-        "relative flex items-center gap-1 px-2 py-2 text-sm font-medium transition-all duration-300";
+        "relative flex items-center gap-1 px-2 py-2 text-base font-medium transition-all duration-300";
       const colorClass = isMobile
         ? "text-gray-800 dark:text-gray-200 hover:text-blue-500"
         : "text-gray-700 dark:text-gray-200 hover:text-blue-500";

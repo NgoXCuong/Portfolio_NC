@@ -46,20 +46,26 @@ const Home = () => {
           transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
         />
 
-        {/* 🔥 Đom đóm bay */}
-        {/* 🔥 Đom đóm bay theo theme Hacker */}
+        {/* 🔥 Đom đóm bay cải tiến theo theme */}
         {[...Array(30)].map((_, i) => {
           const isDark = window.matchMedia(
             "(prefers-color-scheme: dark)"
           ).matches;
           const isBright = i % 2 === 0;
 
-          // Chọn màu theo theme Hacker
+          // 🎨 Chọn màu linh hoạt theo chế độ
           const hue = isDark
-            ? 140 + Math.random() * 20 // xanh lá neon cho dark
-            : 150 + Math.random() * 10; // xanh nhạt/teal cho light
-          const saturation = isDark ? 90 : 50;
-          const lightness = isBright ? (isDark ? 55 : 45) : isDark ? 35 : 30;
+            ? 140 + Math.random() * 80 // xanh lá - hồng neon
+            : 180 + Math.random() * 60; // xanh lam đậm hơn trong sáng
+
+          const saturation = isDark ? 90 : 70;
+          const lightness = isDark
+            ? isBright
+              ? 65
+              : 40 // neon sáng / tối trong dark
+            : isBright
+            ? 35
+            : 25; // màu tối trong light
 
           const size = isBright
             ? Math.random() * 20 + 10
@@ -68,7 +74,7 @@ const Home = () => {
           return (
             <motion.div
               key={i}
-              className="absolute rounded-full mix-blend-screen blur-lg"
+              className="absolute rounded-full mix-blend-screen"
               style={{
                 width: `${size}px`,
                 height: `${size}px`,
@@ -77,13 +83,13 @@ const Home = () => {
                 left: `${Math.random() * 100}%`,
                 boxShadow: isDark
                   ? isBright
-                    ? "0 0 12px 6px rgba(0,255,0,0.8)" // neon xanh sáng
-                    : "0 0 6px 3px rgba(0,255,0,0.4)" // neon xanh mờ
+                    ? "0 0 20px 10px rgba(0,255,180,0.9)" // neon sáng trong dark
+                    : "0 0 12px 6px rgba(0,255,180,0.5)"
                   : isBright
-                  ? "0 0 10px 5px rgba(0,200,150,0.6)" // teal sáng
-                  : "0 0 5px 2px rgba(0,150,100,0.4)", // teal mờ
+                  ? "0 0 12px 6px rgba(0,120,120,0.4)" // xanh teal đậm trong light
+                  : "0 0 8px 4px rgba(0,100,100,0.25)",
                 opacity: isBright ? 0.9 : 0.5,
-                filter: isBright ? "blur(5px)" : "blur(8px)",
+                filter: isBright ? "blur(5px)" : "blur(7px)",
               }}
               animate={{
                 x: [0, Math.random() * 120 - 60],
@@ -93,7 +99,7 @@ const Home = () => {
                 rotate: [0, 360],
               }}
               transition={{
-                duration: 8 + Math.random() * 6,
+                duration: 10 + Math.random() * 6,
                 repeat: Infinity,
                 ease: "easeInOut",
                 delay: Math.random() * 4,

@@ -1,6 +1,15 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
+@theme {
+  --font-sans: "Chakra Petch", "Orbitron", sans-serif;
+}
+
+html,
+body {
+  font-family: var(--font-sans);
+}
+
 /* Lắc ngang + trôi nhẹ */
 @keyframes floatX {
   0%,
@@ -113,4 +122,20 @@
 
 .animate-pulse-slow {
   animation: pulseSlow 8s ease-in-out infinite;
+}
+
+@keyframes avatarPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.4));
+  }
+  50% {
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 40px rgba(59, 130, 246, 0.8));
+  }
+}
+
+.glow-avatar {
+  animation: avatarPulse 4s ease-in-out infinite;
 }

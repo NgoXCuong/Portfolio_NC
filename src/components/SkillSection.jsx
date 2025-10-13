@@ -58,7 +58,7 @@ const SkillSection = () => {
       <div className="sm:h-screen relative z-10 container mx-auto px-6 md:px-20 mt-20 sm:mt-10">
         {/* Tiêu đề */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-5xl font-bold mb-3">
+          <h2 className="text-3xl sm:text-5xl font-bold mb-3 sm:mb-8">
             Kỹ Năng & Chuyên Môn
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
@@ -71,11 +71,15 @@ const SkillSection = () => {
         {/* Lưới nội dung */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
           {/* Cat trái */}
-          <div className="rounded-xl overflow-hidden shadow-md hover:scale-[1.02] transition-transform duration-500 h-52 sm:h-60">
+          <div
+            className="rounded-xl overflow-hidden shadow-md hover:scale-[1.02] transition-transform duration-500 h-52 sm:h-60"
+            onMouseEnter={() => setHoverCat1(true)}
+            onMouseLeave={() => setHoverCat1(false)}
+          >
             <img
               src={hoverCat1 ? catHover : cat1}
               alt="cat1"
-              className="w-full h-full object-cover rounded-xl hover:opacity-95 transition-opacity"
+              className="w-full h-full object-cover rounded-xl transition-opacity duration-500"
             />
           </div>
 
@@ -84,7 +88,7 @@ const SkillSection = () => {
             <h3 className="text-2xl font-semibold pb-5">
               ⚙️ Công cụ & Công nghệ
             </h3>
-            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 pb-7">
+            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 pb-5">
               Thành thạo các công cụ hiện đại giúp xây dựng ứng dụng web nhanh,
               linh hoạt và tối ưu trải nghiệm người dùng.
             </p>
@@ -95,7 +99,7 @@ const SkillSection = () => {
 
               {/* Motion div frontend */}
               <motion.div
-                className="flex gap-7 sm:gap-9 pt-2 pb-5"
+                className="flex gap-7 sm:gap-9  pb-4"
                 initial={{ x: "-100%" }}
                 animate={{ x: "100%" }}
                 transition={{ repeat: Infinity, duration: 18, ease: "linear" }}
@@ -117,7 +121,7 @@ const SkillSection = () => {
 
               {/* Motion div backend */}
               <motion.div
-                className="flex gap-7 sm:gap-9 pt-2 pb-5"
+                className="flex gap-7 sm:gap-9 pt-2"
                 initial={{ x: "100%" }}
                 animate={{ x: "-100%" }}
                 transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
@@ -144,15 +148,15 @@ const SkillSection = () => {
             <h3 className="text-2xl font-semibold pb-5">
               💡 Kỹ Năng Mềm & Phát Triển Bản Thân
             </h3>
-            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 pb-7">
+            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 pb-5">
               Mình đề cao tinh thần học hỏi, khả năng giao tiếp, hợp tác và giải
               quyết vấn đề trong môi trường năng động.
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5 justify-items-start">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-5 justify-items-start">
               {softSkills.map((skill, i) => (
                 <motion.div
                   key={i}
-                  className="relative flex items-center justify-center bg-slate-100/80 dark:bg-gray-700/80 text-gray-700 dark:text-gray-200 px-2 py-1 rounded-md text-base sm:text-lg border border-slate-200 dark:border-gray-600 shadow-sm select-none"
+                  className="relative flex items-center justify-center bg-slate-100/80 dark:bg-gray-700/80 text-gray-700 dark:text-gray-200 px-2 rounded-md text-base sm:text-lg border border-slate-200 dark:border-gray-600 shadow-sm select-none"
                   animate={{ y: [0, -1, 0, 1, 0], x: [0, 1, 0, -1, 0] }}
                   transition={{
                     duration: 3 + Math.random() * 2,
@@ -169,7 +173,7 @@ const SkillSection = () => {
                   <img
                     src={bookIcon}
                     alt="Book"
-                    className="absolute -top-2 -right-2 sm:-top-5 sm:-right-5 w-6 h-6 sm:w-10 sm:h-10  opacity-80 pointer-events-none"
+                    className="absolute -top-2 -right-2 sm:-top-5 sm:-right-5 w-6 h-6 sm:w-10 sm:h-10 opacity-80 pointer-events-none"
                   />
                   {skill}
                 </motion.div>
@@ -178,11 +182,15 @@ const SkillSection = () => {
           </div>
 
           {/* Cat phải */}
-          <div className="rounded-xl overflow-hidden shadow-md hover:scale-[1.02] transition-transform duration-500 h-52 sm:h-60 md:mt-0">
+          <div
+            className="rounded-xl overflow-hidden shadow-md hover:scale-[1.02] transition-transform duration-500 h-52 sm:h-60 md:mt-0"
+            onMouseEnter={() => setHoverCat3(true)}
+            onMouseLeave={() => setHoverCat3(false)}
+          >
             <img
               src={hoverCat3 ? catHover : cat3}
               alt="cat3"
-              className="w-full h-full object-cover hover:opacity-95 transition-opacity"
+              className="w-full h-full object-cover rounded-xl transition-opacity duration-500"
             />
           </div>
         </div>
