@@ -12,7 +12,7 @@ const Home = () => {
   return (
     <div className="relative text-gray-900 dark:text-white overflow-hidden min-h-screen transition-colors duration-700">
       {/* 🌌 Nền phát sáng tương lai */}
-      <div className="absolute inset-0 -z-10 overflow-hidden transition-all duration-700 bg-gradient-to-br from-white via-sky-100 to-pink-100 dark:from-[#050510] dark:via-[#0A0F24] dark:to-[#000000]">
+      <div className="absolute inset-0 -z-20 overflow-hidden transition-all duration-700 bg-gradient-to-br from-white via-sky-100 to-pink-100 dark:from-[#050510] dark:via-[#0A0F24] dark:to-[#000000]">
         {/* 🪩 Gradient phủ nhẹ */}
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 dark:from-cyan-500/15 dark:via-purple-700/15 dark:to-pink-500/15 animate-[pulse_12s_ease-in-out_infinite]" />
 
@@ -52,21 +52,11 @@ const Home = () => {
             "(prefers-color-scheme: dark)"
           ).matches;
           const isBright = i % 2 === 0;
-
-          // 🎨 Chọn màu linh hoạt theo chế độ
           const hue = isDark
-            ? 140 + Math.random() * 80 // xanh lá - hồng neon
-            : 180 + Math.random() * 60; // xanh lam đậm hơn trong sáng
-
+            ? 140 + Math.random() * 80
+            : 180 + Math.random() * 60;
           const saturation = isDark ? 90 : 70;
-          const lightness = isDark
-            ? isBright
-              ? 65
-              : 40 // neon sáng / tối trong dark
-            : isBright
-            ? 35
-            : 25; // màu tối trong light
-
+          const lightness = isDark ? (isBright ? 65 : 40) : isBright ? 35 : 25;
           const size = isBright
             ? Math.random() * 20 + 10
             : Math.random() * 10 + 4;
@@ -83,10 +73,10 @@ const Home = () => {
                 left: `${Math.random() * 100}%`,
                 boxShadow: isDark
                   ? isBright
-                    ? "0 0 20px 10px rgba(0,255,180,0.9)" // neon sáng trong dark
+                    ? "0 0 20px 10px rgba(0,255,180,0.9)"
                     : "0 0 12px 6px rgba(0,255,180,0.5)"
                   : isBright
-                  ? "0 0 12px 6px rgba(0,120,120,0.4)" // xanh teal đậm trong light
+                  ? "0 0 12px 6px rgba(0,120,120,0.4)"
                   : "0 0 8px 4px rgba(0,100,100,0.25)",
                 opacity: isBright ? 0.9 : 0.5,
                 filter: isBright ? "blur(5px)" : "blur(7px)",
@@ -107,11 +97,23 @@ const Home = () => {
             />
           );
         })}
+
+        {/* 🕸️ Lớp grid nền chéo sáng */}
+        <div
+          className="absolute inset-0 z-0 pointer-events-none mix-blend-overlay"
+          style={{
+            backgroundImage: `
+              repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.06) 0, rgba(0, 0, 0, 0.06) 1px, transparent 1px, transparent 20px),
+              repeating-linear-gradient(-45deg, rgba(0, 0, 0, 0.06) 0, rgba(0, 0, 0, 0.06) 1px, transparent 1px, transparent 20px)
+            `,
+            backgroundSize: "40px 40px",
+          }}
+        />
       </div>
 
       {/* 🧩 Nội dung trang */}
       <Header />
-      <main>
+      <main className="relative z-10">
         <HeroSection />
         <SkillSection />
         <ProjectSection />

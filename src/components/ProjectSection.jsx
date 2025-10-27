@@ -3,10 +3,9 @@ import React from "react";
 const projects = [
   {
     id: 1,
-    title: "Todo List",
-    subtitle: "Dự án 1",
-    image:
-      "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=60",
+    title: "Todo With Me",
+    subtitle: "Học Node.Js và ReactJs tạo ứng dụng todo list đơn giản",
+    image: "todo-with-me.png",
   },
   {
     id: 2,
