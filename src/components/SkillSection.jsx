@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import cat1 from "../assets/cat1.jpeg";
 import catHover from "../assets/cat2.jpeg";
 import cat3 from "../assets/cat3.jpeg";
-import bookIcon from "../assets/closed-book.svg";
 import css3 from "../assets/CSS3.svg";
 import html5 from "../assets/HTML5.svg";
 import cSharp from "../assets/CSharp.svg";
@@ -20,180 +19,202 @@ import vite from "../assets/ViteJs.svg";
 
 const techSkills = {
   frontend: [
-    { name: "React", icon: react },
-    { name: "Vite", icon: vite },
-    { name: "JavaScript", icon: javaScript },
-    { name: "HTML5", icon: html5 },
-    { name: "CSS3", icon: css3 },
-    { name: "TailwindCSS", icon: tailwind },
+    { name: "React", icon: react }, { name: "Vite", icon: vite },
+    { name: "JavaScript", icon: javaScript }, { name: "HTML5", icon: html5 },
+    { name: "CSS3", icon: css3 }, { name: "TailwindCSS", icon: tailwind },
+    // duplicate for seamless loop
+    { name: "React", icon: react }, { name: "Vite", icon: vite },
+    { name: "JavaScript", icon: javaScript }, { name: "HTML5", icon: html5 },
+    { name: "CSS3", icon: css3 }, { name: "TailwindCSS", icon: tailwind },
   ],
   backend: [
-    { name: "Node.js", icon: node },
-    { name: "Express", icon: express },
-    { name: "MySQL", icon: mySQL },
-    { name: "MongoDB", icon: mongodb },
-    { name: "Postman", icon: postman },
-    { name: "Java", icon: java },
-    { name: "CSharp", icon: cSharp },
+    { name: "Node.js", icon: node }, { name: "Express", icon: express },
+    { name: "MySQL", icon: mySQL }, { name: "MongoDB", icon: mongodb },
+    { name: "Postman", icon: postman }, { name: "Java", icon: java }, { name: "CSharp", icon: cSharp },
+    // duplicate
+    { name: "Node.js", icon: node }, { name: "Express", icon: express },
+    { name: "MySQL", icon: mySQL }, { name: "MongoDB", icon: mongodb },
+    { name: "Postman", icon: postman }, { name: "Java", icon: java }, { name: "CSharp", icon: cSharp },
   ],
 };
 
 const softSkills = [
-  "Giao Tiếp",
-  "Hòa Đồng",
-  "Đáng Tin Cậy",
-  "Quản Lý Thời Gian",
-  "Ham Học Hỏi",
+  { label: "Giao Tiếp", emoji: "💬" },
+  { label: "Hòa Đồng", emoji: "🤝" },
+  { label: "Đáng Tin Cậy", emoji: "🛡️" },
+  { label: "Quản Lý Thời Gian", emoji: "⏰" },
+  { label: "Ham Học Hỏi", emoji: "🔬" },
+  { label: "Tư Duy Sáng Tạo", emoji: "💡" },
 ];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
+};
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
 
 const SkillSection = () => {
   const [hoverCat1, setHoverCat1] = useState(false);
   const [hoverCat3, setHoverCat3] = useState(false);
 
   return (
-    <section
-      id="skills"
-      className="relative pb-12 text-gray-900 dark:text-white"
-    >
-      <div className="sm:h-screen relative z-10 container mx-auto px-6 md:px-20 mt-20 sm:mt-10">
-        {/* Tiêu đề */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-5xl font-bold mb-3 sm:mb-8">
-            Kỹ Năng & Chuyên Môn
-          </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Là một nhà phát triển web mới vào nghề, mình có nền tảng vững chắc
-            về ReactJS, Node.js và ExpressJS, cùng niềm đam mê xây dựng giao
-            diện hiện đại.
-          </p>
-        </div>
+    <section id="skills" className="relative py-24 overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/3 left-0 w-72 h-72 rounded-full bg-purple-400/5 dark:bg-purple-500/6 blur-[100px]" />
+        <div className="absolute bottom-1/4 right-0 w-96 h-96 rounded-full bg-cyan-400/5 blur-[120px]" />
+      </div>
 
-        {/* Lưới nội dung */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
-          {/* Cat trái */}
-          <div
-            className="rounded-xl overflow-hidden shadow-md hover:scale-[1.02] transition-transform duration-500 h-52 sm:h-60"
-            onMouseEnter={() => setHoverCat1(true)}
-            onMouseLeave={() => setHoverCat1(false)}
-          >
-            <img
-              src={hoverCat1 ? catHover : cat1}
-              alt="cat1"
-              className="w-full h-full object-cover rounded-xl transition-opacity duration-500"
-            />
-          </div>
+      <div className="relative z-10 container mx-auto px-6 md:px-20">
+        {/* Header */}
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: -20 }} whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }} transition={{ duration: 0.6 }}
+        >
+          <div className="section-label justify-center mb-4">KỸ NĂNG & CHUYÊN MÔN</div>
+          <h2 className="text-3xl sm:text-5xl font-bold mb-4">
+            <span className="heading-gradient">Stack & Công Nghệ</span>
+          </h2>
+          <p className="text-base sm:text-lg text-gray-500 dark:text-slate-400 max-w-2xl mx-auto">
+            Nền tảng vững chắc về{" "}
+            <span className="text-cyan-600 dark:text-cyan-400 font-medium">ReactJS</span>,{" "}
+            <span className="text-purple-600 dark:text-purple-400 font-medium">Node.js</span> và{" "}
+            <span className="text-pink-600 dark:text-pink-400 font-medium">ExpressJS</span>.
+          </p>
+        </motion.div>
+
+        {/* Grid */}
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-3 gap-5"
+          variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}
+        >
+          {/* Cat left */}
+          <motion.div variants={itemVariants}>
+            <div
+              className="relative rounded-2xl overflow-hidden cursor-pointer group h-56 sm:h-64
+                border border-gray-200 dark:border-cyan-400/15
+                shadow-sm dark:shadow-none
+                hover:shadow-md transition-all duration-300"
+              onMouseEnter={() => setHoverCat1(true)}
+              onMouseLeave={() => setHoverCat1(false)}
+            >
+              <img src={hoverCat1 ? catHover : cat1} alt="cat"
+                className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+              <div className="absolute bottom-3 left-3 text-xs text-white font-medium tracking-widest uppercase opacity-90">
+                Keep coding 🐱
+              </div>
+              <div className="corner-bracket tl" /><div className="corner-bracket tr" />
+              <div className="corner-bracket bl" /><div className="corner-bracket br" />
+            </div>
+          </motion.div>
 
           {/* Tech Skills */}
-          <div className="col-span-2 bg-white/30 dark:bg-gray-800/30 p-4 rounded-xl shadow-md border border-gray-100 dark:border-gray-700 backdrop-blur-sm h-auto">
-            <h3 className="text-2xl font-semibold pb-5">
-              ⚙️ Công cụ & Công nghệ
-            </h3>
-            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 pb-5">
-              Thành thạo các công cụ hiện đại giúp xây dựng ứng dụng web nhanh,
-              linh hoạt và tối ưu trải nghiệm người dùng.
-            </p>
+          <motion.div variants={itemVariants} className="col-span-2">
+            <div className="glass-card rounded-2xl p-5 h-full">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-2 h-2 rounded-full bg-cyan-500 dark:bg-cyan-400 animate-pulse" />
+                <h3 className="text-lg font-bold text-gray-800 dark:text-slate-100">⚙️ Công Cụ & Công Nghệ</h3>
+              </div>
+              <p className="text-sm text-gray-500 dark:text-slate-400 mb-5 leading-relaxed">
+                Thành thạo các công cụ hiện đại giúp xây dựng ứng dụng web nhanh, linh hoạt và tối ưu trải nghiệm người dùng.
+              </p>
 
-            <div className="relative rounded-xl overflow-hidden">
-              <div className="absolute left-0 top-0 h-full w-12 sm:w-16 bg-gradient-to-r from-white dark:from-gray-800 z-10 pointer-events-none" />
-              <div className="absolute right-0 top-0 h-full w-12 sm:w-16 bg-gradient-to-l from-white dark:from-gray-800 z-10 pointer-events-none" />
+              <div className="relative overflow-hidden rounded-xl">
+                {/* Fade edges — adaptive */}
+                <div className="absolute left-0 top-0 h-full w-10 z-10 pointer-events-none
+                  bg-gradient-to-r from-white dark:from-[#061432] to-transparent" />
+                <div className="absolute right-0 top-0 h-full w-10 z-10 pointer-events-none
+                  bg-gradient-to-l from-white dark:from-[#061432] to-transparent" />
 
-              {/* Motion div frontend */}
-              <motion.div
-                className="flex gap-7 sm:gap-9  pb-4"
-                initial={{ x: "-100%" }}
-                animate={{ x: "100%" }}
-                transition={{ repeat: Infinity, duration: 18, ease: "linear" }}
-              >
-                {techSkills.frontend.map((skill, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center gap-1 text-base sm:text-lg text-gray-700 dark:text-gray-200 hover:scale-110 transition-transform whitespace-nowrap"
-                  >
-                    <img
-                      src={skill.icon}
-                      alt={skill.name}
-                      className="w-4 h-4 sm:w-5 sm:h-5"
-                    />
-                    {skill.name}
+                {/* Frontend row */}
+                <div className="marquee-wrapper mb-3">
+                  <div className="marquee-track marquee-forward gap-5">
+                    {techSkills.frontend.map((skill, i) => (
+                      <div key={i} className="skill-badge">
+                        <img src={skill.icon} alt={skill.name} className="w-4 h-4" />
+                        {skill.name}
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </motion.div>
+                </div>
 
-              {/* Motion div backend */}
-              <motion.div
-                className="flex gap-7 sm:gap-9 pt-2"
-                initial={{ x: "100%" }}
-                animate={{ x: "-100%" }}
-                transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
-              >
-                {techSkills.backend.map((skill, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center gap-1 text-base sm:text-lg text-gray-700 dark:text-gray-200 hover:scale-110 transition-transform whitespace-nowrap"
-                  >
-                    <img
-                      src={skill.icon}
-                      alt={skill.name}
-                      className="w-4 h-4 sm:w-5 sm:h-5"
-                    />
-                    {skill.name}
+                {/* Backend row */}
+                <div className="marquee-wrapper">
+                  <div className="marquee-track marquee-backward gap-5">
+                    {techSkills.backend.map((skill, i) => (
+                      <div key={i} className="skill-badge"
+                        style={{
+                          background: "rgba(168,85,247,0.07)",
+                          borderColor: "rgba(168,85,247,0.25)",
+                          color: "#9333ea",
+                        }}
+                      >
+                        <img src={skill.icon} alt={skill.name} className="w-4 h-4" />
+                        {skill.name}
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </motion.div>
+                </div>
+              </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Soft Skills */}
-          <div className="col-span-2 bg-white/30 dark:bg-gray-800/30 p-4 rounded-xl shadow-md border border-gray-100 dark:border-gray-700 backdrop-blur-sm mt-4 md:mt-0">
-            <h3 className="text-2xl font-semibold pb-5">
-              💡 Kỹ Năng Mềm & Phát Triển Bản Thân
-            </h3>
-            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 pb-5">
-              Mình đề cao tinh thần học hỏi, khả năng giao tiếp, hợp tác và giải
-              quyết vấn đề trong môi trường năng động.
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-5 justify-items-start">
-              {softSkills.map((skill, i) => (
-                <motion.div
-                  key={i}
-                  className="relative flex items-center justify-center bg-slate-100/80 dark:bg-gray-700/80 text-gray-700 dark:text-gray-200 px-2 rounded-md text-base sm:text-lg border border-slate-200 dark:border-gray-600 shadow-sm select-none"
-                  animate={{ y: [0, -1, 0, 1, 0], x: [0, 1, 0, -1, 0] }}
-                  transition={{
-                    duration: 3 + Math.random() * 2,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: Math.random(),
-                  }}
-                  whileHover={{
-                    scale: 1.05,
-                    rotate: 2,
-                    transition: { duration: 0.2 },
-                  }}
-                >
-                  <img
-                    src={bookIcon}
-                    alt="Book"
-                    className="absolute -top-2 -right-2 sm:-top-5 sm:-right-5 w-6 h-6 sm:w-10 sm:h-10 opacity-80 pointer-events-none"
-                  />
-                  {skill}
-                </motion.div>
-              ))}
+          <motion.div variants={itemVariants} className="col-span-2">
+            <div className="glass-card rounded-2xl p-5 h-full">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-2 h-2 rounded-full bg-purple-500 dark:bg-purple-400 animate-pulse" />
+                <h3 className="text-lg font-bold text-gray-800 dark:text-slate-100">💡 Kỹ Năng Mềm</h3>
+              </div>
+              <p className="text-sm text-gray-500 dark:text-slate-400 mb-5 leading-relaxed">
+                Tinh thần học hỏi, khả năng giao tiếp và hợp tác tốt trong môi trường năng động.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                {softSkills.map((skill, i) => (
+                  <motion.div
+                    key={i} className="soft-tag"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.08, duration: 0.4 }}
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <span>{skill.emoji}</span>
+                    {skill.label}
+                  </motion.div>
+                ))}
+              </div>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Cat phải */}
-          <div
-            className="rounded-xl overflow-hidden shadow-md hover:scale-[1.02] transition-transform duration-500 h-52 sm:h-60 md:mt-0"
-            onMouseEnter={() => setHoverCat3(true)}
-            onMouseLeave={() => setHoverCat3(false)}
-          >
-            <img
-              src={hoverCat3 ? catHover : cat3}
-              alt="cat3"
-              className="w-full h-full object-cover rounded-xl transition-opacity duration-500"
-            />
-          </div>
-        </div>
+          {/* Cat right */}
+          <motion.div variants={itemVariants}>
+            <div
+              className="relative rounded-2xl overflow-hidden cursor-pointer group h-56 sm:h-64
+                border border-gray-200 dark:border-purple-400/18
+                shadow-sm dark:shadow-none
+                hover:shadow-md transition-all duration-300"
+              onMouseEnter={() => setHoverCat3(true)}
+              onMouseLeave={() => setHoverCat3(false)}
+            >
+              <img src={hoverCat3 ? catHover : cat3} alt="cat"
+                className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+              <div className="absolute bottom-3 left-3 text-xs text-white font-medium tracking-widest uppercase opacity-90">
+                Debug mode 🐾
+              </div>
+              <div className="corner-bracket tl" style={{ borderColor: "rgba(168,85,247,0.5)" }} />
+              <div className="corner-bracket tr" style={{ borderColor: "rgba(168,85,247,0.5)" }} />
+              <div className="corner-bracket bl" style={{ borderColor: "rgba(168,85,247,0.5)" }} />
+              <div className="corner-bracket br" style={{ borderColor: "rgba(168,85,247,0.5)" }} />
+            </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
