@@ -6,7 +6,7 @@
 
 ## ✨ Live Preview
 
-> _Coming soon — deploy via Vercel / Netlify_
+> 🚀 **[https://portfolio-nc-lemon.vercel.app/](https://portfolio-nc-lemon.vercel.app/)**
 
 ---
 
@@ -39,13 +39,16 @@ frontend/
 ├── src/
 │   ├── assets/              # SVG icons, images, cat photos
 │   ├── components/
-│   │   ├── layout/
-│   │   │   ├── Header.jsx   # Sticky nav, dark/light toggle
-│   │   │   └── Footer.jsx
+│   │   ├── layout/          # Header, DarkMode toggle
+│   │   ├── projects/        # ProjectCard.jsx, ProjectModal.jsx
 │   │   ├── HeroSection.jsx  # Animated hero with particles
 │   │   ├── SkillSection.jsx # Marquee tech stack + soft skills
-│   │   ├── ProjectSection.jsx # 3 project cards + modal
-│   │   └── ContactSection.jsx # Form + map + social links
+│   │   ├── ProjectSection.jsx # Main grid layout for projects
+│   │   └── ContactSection.jsx # Contact info, map, social links
+│   ├── data/
+│   │   ├── contactData.jsx
+│   │   ├── projectsData.jsx
+│   │   └── skillsData.js
 │   ├── pages/
 │   │   └── Home.jsx
 │   ├── index.css            # Design system + light mode overrides
