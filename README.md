@@ -109,7 +109,6 @@ frontend/
 ```bash
 # Clone the repo
 git clone https://github.com/NgoXCuong/portfolio_nc.git
-cd portfolio_nc/frontend
 
 # Install dependencies
 npm install

@@ -3,49 +3,7 @@ import { motion } from "framer-motion";
 import cat1 from "../assets/cat1.jpeg";
 import catHover from "../assets/cat2.jpeg";
 import cat3 from "../assets/cat3.jpeg";
-import css3 from "../assets/CSS3.svg";
-import html5 from "../assets/HTML5.svg";
-import cSharp from "../assets/CSharp.svg";
-import express from "../assets/Express.svg";
-import java from "../assets/Java.svg";
-import javaScript from "../assets/JavaScript.svg";
-import mongodb from "../assets/MongoDB.svg";
-import node from "../assets/NodeJs.svg";
-import mySQL from "../assets/MySQL.svg";
-import postman from "../assets/Postman.svg";
-import react from "../assets/React.svg";
-import tailwind from "../assets/TailwindCSS.svg";
-import vite from "../assets/ViteJs.svg";
-
-const techSkills = {
-  frontend: [
-    { name: "React", icon: react }, { name: "Vite", icon: vite },
-    { name: "JavaScript", icon: javaScript }, { name: "HTML5", icon: html5 },
-    { name: "CSS3", icon: css3 }, { name: "TailwindCSS", icon: tailwind },
-    // duplicate for seamless loop
-    { name: "React", icon: react }, { name: "Vite", icon: vite },
-    { name: "JavaScript", icon: javaScript }, { name: "HTML5", icon: html5 },
-    { name: "CSS3", icon: css3 }, { name: "TailwindCSS", icon: tailwind },
-  ],
-  backend: [
-    { name: "Node.js", icon: node }, { name: "Express", icon: express },
-    { name: "MySQL", icon: mySQL }, { name: "MongoDB", icon: mongodb },
-    { name: "Postman", icon: postman }, { name: "Java", icon: java }, { name: "CSharp", icon: cSharp },
-    // duplicate
-    { name: "Node.js", icon: node }, { name: "Express", icon: express },
-    { name: "MySQL", icon: mySQL }, { name: "MongoDB", icon: mongodb },
-    { name: "Postman", icon: postman }, { name: "Java", icon: java }, { name: "CSharp", icon: cSharp },
-  ],
-};
-
-const softSkills = [
-  { label: "Giao Tiếp", emoji: "💬" },
-  { label: "Hòa Đồng", emoji: "🤝" },
-  { label: "Đáng Tin Cậy", emoji: "🛡️" },
-  { label: "Quản Lý Thời Gian", emoji: "⏰" },
-  { label: "Ham Học Hỏi", emoji: "🔬" },
-  { label: "Tư Duy Sáng Tạo", emoji: "💡" },
-];
+import { techSkills, softSkills } from "../data/skillsData";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -80,10 +38,19 @@ const SkillSection = () => {
             <span className="heading-gradient">Stack & Công Nghệ</span>
           </h2>
           <p className="text-base sm:text-lg text-gray-500 dark:text-slate-400 max-w-2xl mx-auto">
-            Nền tảng vững chắc về{" "}
-            <span className="text-cyan-600 dark:text-cyan-400 font-medium">ReactJS</span>,{" "}
-            <span className="text-purple-600 dark:text-purple-400 font-medium">Node.js</span> và{" "}
-            <span className="text-pink-600 dark:text-pink-400 font-medium">ExpressJS</span>.
+            Có kinh nghiệm thực hành phát triển ứng dụng web bằng{" "}
+            <span className="text-cyan-600 dark:text-cyan-400 font-medium">
+              ReactJS
+            </span>
+            ,{" "}
+            <span className="text-purple-600 dark:text-purple-400 font-medium">
+              Node.js
+            </span>{" "}
+            và{" "}
+            <span className="text-pink-600 dark:text-pink-400 font-medium">
+              ExpressJS
+            </span>{" "}
+            thông qua các dự án cá nhân và học tập.
           </p>
         </motion.div>
 
@@ -152,6 +119,24 @@ const SkillSection = () => {
                           background: "rgba(168,85,247,0.07)",
                           borderColor: "rgba(168,85,247,0.25)",
                           color: "#9333ea",
+                        }}
+                      >
+                        <img src={skill.icon} alt={skill.name} className="w-4 h-4" />
+                        {skill.name}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Database & Tool row */}
+                <div className="marquee-wrapper mt-3">
+                  <div className="marquee-track marquee-forward gap-5">
+                    {techSkills.database_tool.map((skill, i) => (
+                      <div key={i} className="skill-badge"
+                        style={{
+                          background: "rgba(16,185,129,0.07)",
+                          borderColor: "rgba(16,185,129,0.25)",
+                          color: "#10b981",
                         }}
                       >
                         <img src={skill.icon} alt={skill.name} className="w-4 h-4" />

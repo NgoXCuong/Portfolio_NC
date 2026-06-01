@@ -5,6 +5,7 @@ import avatar from "../assets/avatar.svg";
 import bookIcon from "../assets/closed-book.svg";
 import rocketIcon from "../assets/rocket-icon.svg";
 import laptopIcon from "../assets/laptop-icon.svg";
+import cvPdf from "../assets/Ngo_Xuan_Cuong_CV.pdf";
 
 /* ─── Animated particles (dark mode only) ──────────────────────── */
 const Particle = ({ x, y, size, color, delay, dx1, dy1, dx2, dy2 }) => (
@@ -131,7 +132,7 @@ const HeroSection = () => {
 
           {/* Stats */}
           <div className="flex gap-6 mt-2">
-            {[{ val: "2+", label: "Năm học tập" }, { val: "10+", label: "Dự án" }, { val: "5+", label: "Công nghệ" }].map((s, i) => (
+            {[{ val: "3+", label: "Năm học tập" }, { val: "10+", label: "Dự án" }, { val: "5+", label: "Công nghệ" }].map((s, i) => (
               <div key={i} className="text-center">
                 <div className="text-2xl font-bold font-mono text-cyan-600 dark:text-cyan-400">{s.val}</div>
                 <div className="text-xs text-gray-400 dark:text-slate-500 mt-0.5 tracking-wider uppercase">{s.label}</div>
@@ -147,8 +148,8 @@ const HeroSection = () => {
             >
               <span>🚀</span> Xem dự án
             </button>
-            <a href="#contact" className="btn-neon flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm sm:text-base">
-              <span>✨</span> Liên hệ tôi
+            <a href={cvPdf} target="_blank" rel="noopener noreferrer" className="btn-neon flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm sm:text-base">
+              <span>📄</span> Xem CV
             </a>
           </div>
         </motion.div>
