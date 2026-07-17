@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ExternalLink, Github } from "lucide-react";
@@ -52,7 +53,7 @@ const ProjectModal = ({ project, onClose }) => {
 
           {/* Header image */}
           <div className="relative h-52 overflow-hidden rounded-t-2xl">
-            <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+            <img src={project.image.src || project.image} alt={project.title} className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-white/95 via-white/40 to-transparent dark:from-[#070f2b] dark:via-[#070f2b]/40" />
 
             {/* Close button */}

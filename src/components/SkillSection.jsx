@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import cat1 from "../assets/cat1.jpeg";
@@ -69,7 +70,7 @@ const SkillSection = () => {
               onMouseEnter={() => setHoverCat1(true)}
               onMouseLeave={() => setHoverCat1(false)}
             >
-              <img src={hoverCat1 ? catHover : cat1} alt="cat"
+              <img src={(hoverCat1 ? catHover : cat1).src || (hoverCat1 ? catHover : cat1)} alt="cat"
                 className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
               <div className="absolute bottom-3 left-3 text-xs text-white font-medium tracking-widest uppercase opacity-90">
@@ -103,7 +104,7 @@ const SkillSection = () => {
                   <div className="marquee-track marquee-forward gap-5">
                     {techSkills.frontend.map((skill, i) => (
                       <div key={i} className="skill-badge">
-                        <img src={skill.icon} alt={skill.name} className="w-4 h-4" />
+                        <img src={skill.icon.src || skill.icon} alt={skill.name} className="w-4 h-4" />
                         {skill.name}
                       </div>
                     ))}
@@ -121,7 +122,7 @@ const SkillSection = () => {
                           color: "#9333ea",
                         }}
                       >
-                        <img src={skill.icon} alt={skill.name} className="w-4 h-4" />
+                        <img src={skill.icon.src || skill.icon} alt={skill.name} className="w-4 h-4" />
                         {skill.name}
                       </div>
                     ))}
@@ -139,7 +140,7 @@ const SkillSection = () => {
                           color: "#10b981",
                         }}
                       >
-                        <img src={skill.icon} alt={skill.name} className="w-4 h-4" />
+                        <img src={skill.icon.src || skill.icon} alt={skill.name} className="w-4 h-4" />
                         {skill.name}
                       </div>
                     ))}
@@ -187,7 +188,7 @@ const SkillSection = () => {
               onMouseEnter={() => setHoverCat3(true)}
               onMouseLeave={() => setHoverCat3(false)}
             >
-              <img src={hoverCat3 ? catHover : cat3} alt="cat"
+              <img src={(hoverCat3 ? catHover : cat3).src || (hoverCat3 ? catHover : cat3)} alt="cat"
                 className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
               <div className="absolute bottom-3 left-3 text-xs text-white font-medium tracking-widest uppercase opacity-90">

@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { Typewriter } from "react-simple-typewriter";
 import { motion } from "framer-motion";
@@ -5,7 +6,8 @@ import avatar from "../assets/avatar.svg";
 import bookIcon from "../assets/closed-book.svg";
 import rocketIcon from "../assets/rocket-icon.svg";
 import laptopIcon from "../assets/laptop-icon.svg";
-import cvPdf from "../assets/Ngo_Xuan_Cuong_CV.pdf";
+
+const cvPdf = "/Ngo_Xuan_Cuong_CV.pdf";
 
 /* ─── Animated particles (dark mode only) ──────────────────────── */
 const Particle = ({ x, y, size, color, delay, dx1, dy1, dx2, dy2 }) => (
@@ -88,11 +90,11 @@ const HeroSection = () => {
 
       {/* ── Floating Icons ──────────────────────────────────────── */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <img src={bookIcon} alt="" className="absolute top-[8%] left-[4%] w-20 sm:w-32 md:w-44 opacity-60 dark:opacity-70 animate-float-x"
+        <img src={bookIcon.src || bookIcon} alt="" className="absolute top-[8%] left-[4%] w-20 sm:w-32 md:w-44 opacity-60 dark:opacity-70 animate-float-x"
           style={{ filter: "drop-shadow(0 0 16px rgba(0,200,255,0.5))" }} />
-        <img src={rocketIcon} alt="" className="absolute top-[20%] right-[10%] md:right-[30%] w-20 sm:w-36 md:w-44 opacity-60 dark:opacity-70 animate-float-rotate"
+        <img src={rocketIcon.src || rocketIcon} alt="" className="absolute top-[20%] right-[10%] md:right-[30%] w-20 sm:w-36 md:w-44 opacity-60 dark:opacity-70 animate-float-rotate"
           style={{ filter: "drop-shadow(0 0 16px rgba(168,85,247,0.6))" }} />
-        <img src={laptopIcon} alt="" className="absolute bottom-[6%] left-1/2 -translate-x-1/2 w-20 sm:w-36 md:w-44 opacity-60 dark:opacity-70 animate-float-y"
+        <img src={laptopIcon.src || laptopIcon} alt="" className="absolute bottom-[6%] left-1/2 -translate-x-1/2 w-20 sm:w-36 md:w-44 opacity-60 dark:opacity-70 animate-float-y"
           style={{ filter: "drop-shadow(0 0 16px rgba(240,171,252,0.5))" }} />
       </div>
 
@@ -171,7 +173,7 @@ const HeroSection = () => {
             {/* Avatar */}
             <div className="avatar-ring relative">
               <img
-                src={avatar}
+                src={avatar.src || avatar}
                 alt="Avatar Ngô Xuân Cường"
                 className="w-52 h-52 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-full object-cover
                   border-2 border-cyan-400/50 dark:border-cyan-400/40

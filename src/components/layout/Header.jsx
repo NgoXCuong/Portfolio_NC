@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useEffect, useRef } from "react";
 import { House, Brain, Rocket, Contact, Menu, X } from "lucide-react";
 import DarkModeToggle from "./DarkModeToggle";
@@ -75,7 +76,7 @@ const Header = () => {
           <div className="relative">
             <div className="absolute inset-0 rounded-full bg-cyan-400/20 blur-md group-hover:blur-lg transition-all duration-300" />
             <img
-              src={nc}
+              src={nc.src || nc}
               alt="NC Logo"
               className="relative w-10 h-10 rounded-full object-cover
                 border border-cyan-400/30 dark:border-cyan-400/40

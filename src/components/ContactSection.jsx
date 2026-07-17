@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { contactInfo, socials } from "../data/contactData";
@@ -39,14 +40,38 @@ const ContactRow = ({ item }) => (
 
 const ContactSection = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState("idle"); // idle | sending | success | error
+  const [statusMsg, setStatusMsg] = useState("");
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSent(true);
-    setTimeout(() => setSent(false), 3000);
-    setForm({ name: "", email: "", message: "" });
+    setStatus("sending");
+    setStatusMsg("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        setStatus("success");
+        setStatusMsg(data.message);
+        setForm({ name: "", email: "", message: "" });
+        setTimeout(() => { setStatus("idle"); setStatusMsg(""); }, 4000);
+      } else {
+        setStatus("error");
+        setStatusMsg(data.error || "Đã xảy ra lỗi. Vui lòng thử lại.");
+        setTimeout(() => { setStatus("idle"); setStatusMsg(""); }, 4000);
+      }
+    } catch {
+      setStatus("error");
+      setStatusMsg("Không thể kết nối đến máy chủ. Vui lòng thử lại.");
+      setTimeout(() => { setStatus("idle"); setStatusMsg(""); }, 4000);
+    }
   };
 
   return (
@@ -117,16 +142,81 @@ const ContactSection = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right: Map */}
-          <motion.div variants={itemVariants}>
+          {/* Right: Contact Form + Map */}
+          <motion.div variants={itemVariants} className="flex flex-col gap-5">
+            {/* Contact Form */}
+            <form onSubmit={handleSubmit} className="glass-card rounded-2xl p-6 flex flex-col gap-4">
+              <div className="flex items-center gap-3 mb-1">
+                <div className="w-2 h-2 rounded-full bg-cyan-500 dark:bg-cyan-400 animate-pulse" />
+                <h3 className="text-lg font-bold text-gray-800 dark:text-slate-100">💬 Gửi Tin Nhắn</h3>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Họ và tên"
+                  value={form.name}
+                  onChange={handleChange}
+                  required
+                  className="input-cyber"
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  value={form.email}
+                  onChange={handleChange}
+                  required
+                  className="input-cyber"
+                />
+              </div>
+              <textarea
+                name="message"
+                placeholder="Nội dung tin nhắn..."
+                value={form.message}
+                onChange={handleChange}
+                required
+                rows={4}
+                className="input-cyber resize-none"
+              />
+
+              {/* Status message */}
+              {statusMsg && (
+                <div className={`text-sm font-medium px-4 py-2.5 rounded-lg border ${
+                  status === "success"
+                    ? "text-green-700 bg-green-50 border-green-200 dark:text-green-300 dark:bg-green-400/10 dark:border-green-400/20"
+                    : "text-red-700 bg-red-50 border-red-200 dark:text-red-300 dark:bg-red-400/10 dark:border-red-400/20"
+                }`}>
+                  {status === "success" ? "✅" : "❌"} {statusMsg}
+                </div>
+              )}
+
+              <button
+                type="submit"
+                disabled={status === "sending"}
+                className="btn-solid-neon px-6 py-3 rounded-xl font-semibold text-sm sm:text-base flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                {status === "sending" ? (
+                  <>
+                    <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    Đang gửi...
+                  </>
+                ) : (
+                  <>🚀 Gửi Tin Nhắn</>
+                )}
+              </button>
+            </form>
+
+            {/* Map */}
             <div
-              className="rounded-2xl overflow-hidden h-[350px]
+              className="rounded-2xl overflow-hidden h-[220px]
       border border-gray-200 dark:border-cyan-400/15
       shadow-sm dark:shadow-none"
             >
               <iframe
                 title="Hanoi Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.970236348145!2d105.7640263758415!3d21.033876887601682!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab0bf0f1742f%3A0xe820ab53e8c05841!2zS8O9IFTDumMgWMOhIE3hu7kgxJDDrG5o!5e0!3m2!1svi!2s!4v1760261989245!5m2!1svi!2s"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.970236348145!2d105.7640263758415!3d21.033876887601682!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab0bf0f1742f%3A0xe820ab53e8c05841!2zS8O5IFTDumMgWMOhIE3hu7kgxJDDrG5o!5e0!3m2!1svi!2s!4v1760261989245!5m2!1svi!2s"
                 width="100%"
                 height="100%"
                 className="border-0 dark:grayscale-[50%] dark:opacity-80 dark:hover:grayscale-0 dark:hover:opacity-100 transition-all duration-500"

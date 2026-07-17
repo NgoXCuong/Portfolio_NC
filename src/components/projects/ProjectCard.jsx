@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronRight, Github, ExternalLink } from "lucide-react";
@@ -47,7 +48,7 @@ const ProjectCard = ({ project, index, onOpen }) => {
         {/* Image */}
         <div className="relative overflow-hidden h-48">
           <img
-            src={project.image}
+            src={project.image.src || project.image}
             alt={project.title}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           />

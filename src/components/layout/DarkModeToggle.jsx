@@ -1,3 +1,4 @@
+"use client";
 import React, { useContext } from "react";
 import { Moon, Sun } from "lucide-react";
 import { ThemeMode } from "../../context/ThemeMode";
